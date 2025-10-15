@@ -37,10 +37,7 @@ while is_quiz_on:
                 print(f"{user_answer} is not present in the states.")
 screen.mainloop()
 
-missed_states_by_user = []
-for state in states:
-    if state not in user_guessed_states:
-        missed_states_by_user.append(state)
+missed_states_by_user = [state for state in states if state not in user_guessed_states]
 
 guess_data = pandas.DataFrame(missed_states_by_user)
 guess_data.to_csv("States to Learn.csv")
