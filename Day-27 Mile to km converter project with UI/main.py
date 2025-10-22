@@ -1,72 +1,35 @@
 from tkinter import *
 
+def button_clicked():
+    user_choice = user_input.get()
+    label.config(text=user_choice)
+
 window = Tk()
-window.title("My First GUI Program")
-window.minsize(width=500 , height=300)
+window.title("GUI")
+window.minsize(width=300 , height= 500)
+window.config(padx=20,pady=100)
 
 # Label
-
-my_label = Label(text= "I am a label.", font=("Arial",24,"italic bold"))
-my_label.pack()
-
-my_label["text"] = "Bhavya Pandurangan"
-my_label.config(foreground="red")
+label = Label(text="I am a Label" , font=("Arial",15,"bold"))
+# label.pack()
+# label.place(x = 20 , y = 40)
+label.grid(row=0,column=0)
+label.config(padx=100,pady=100)
 
 # Button
-def button_clicked():
-    user_input = input.get()
-    my_label.config(text=user_input,fg="blue")
-
-my_button = Button(text="Click me" , command=button_clicked)
-my_button.pack()
+button = Button(text="Submit",command=button_clicked)
+# button.pack()
+# button.place(x = 20 , y = 70)
+button.grid(row=1,column=1)
 
 # Entry
-input = Entry(width=10)
-input.pack()
+user_input = Entry(width=15)
+print(user_input.get())
+# user_input.pack()
+user_input.grid(row=2,column=3)
 
-# Text
-text = Text(height=5 , width= 30)
-text.focus()
-text.insert(END,"Hello all")
-print(text.get("1.0",END))
-text.pack()
-
-# Spinbox
-def spinbox_changed():
-    print(spinbox.get())
-spinbox = Spinbox(from_= 1 , to= 10, width= 2, command=spinbox_changed)
-spinbox.pack()
-
-# Scale
-def scale_changed(value):
-    print(value)
-scale = Scale(from_= 20, to= 50, command=scale_changed)
-scale.pack()
-
-# Check Box
-def checkedstate():
-    print(checked_state.get())
-checked_state = IntVar()
-check_box = Checkbutton(text="Is on?",variable=checked_state,command=checkedstate)
-check_box.pack()
-
-# Radio Button
-def radio_value():
-    print(radio_state.get())
-radio_state = Variable()
-radio_button_1 = Radiobutton(text="Maths", value="Maths", variable=radio_state,command=radio_value)
-radio_button_2 = Radiobutton(text="Chemistry", value="Chemistry", variable=radio_state, command=radio_value)
-radio_button_1.pack()
-radio_button_2.pack()
-
-# List box
-def listbox_used(event):
-    print(listbox.get(listbox.curselection()))
-listbox = Listbox(height=5)
-actors = ["Vijay","SK","Soori","Adharvaa","Mohanlal"]
-for actor in actors:
-    listbox.insert(actors.index(actor),actor)
-listbox.bind("<<ListboxSelect>>",listbox_used)
-listbox.pack()
+# New Button
+button_2 = Button(text="New Button")
+button_2.grid(row=0,column=2)
 
 window.mainloop()
