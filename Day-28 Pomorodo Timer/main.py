@@ -75,7 +75,7 @@ title_label = Label(text="Timer",foreground=GREEN,font=("Times new roman",35,"bo
 title_label.grid(row=0,column=1)
 
 canvas = Canvas(width=200, height=223, background="#FFF5F2",highlightthickness=0)
-tomato_img = PhotoImage(file="tomato.png")
+tomato_img = PhotoImage(file="Day-28 Pomorodo Timer/tomato.png")
 canvas.create_image(100,111,image = tomato_img)
 timer_text = canvas.create_text(101,137,text="00:00",fill="white",font=(FONT_NAME,35,"bold"))
 canvas.grid(row=1,column=1)
