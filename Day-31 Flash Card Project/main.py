@@ -8,9 +8,9 @@ current_card = {}
 data_dict = {}
 
 try:
-    data = pd.read_csv("data/words_to_learn.csv")
+    data = pd.read_csv("Day-31 Flash Card Project/data/words_to_learn.csv")
 except FileNotFoundError:
-    og_data = pd.read_csv("data/french_words.csv")
+    og_data = pd.read_csv("Day-31 Flash Card Project/data/french_words.csv")
     data_dict = og_data.to_dict(orient="records")
 else:
     data_dict = data.to_dict(orient="records")
@@ -28,7 +28,7 @@ def is_known_card():
     data_dict.remove(current_card)
     print(len(data_dict))
     df = pd.DataFrame(data_dict)
-    df.to_csv("data/words_to_learn.csv",index=False)
+    df.to_csv("Day-31 Flash Card Project/data/words_to_learn.csv",index=False)
     change_word()
 
 def flip_card():
@@ -43,19 +43,19 @@ window.config(background=BACKGROUND_COLOR,padx=50,pady=50)
 flip_timer = window.after(3000,func=flip_card)
 
 canvas = Canvas(width=800,height=526,bg=BACKGROUND_COLOR,highlightthickness=0)
-front_img = PhotoImage(file="images/card_front.png")
-back_img = PhotoImage(file="images/card_back.png")
+front_img = PhotoImage(file="Day-31 Flash Card Project/images/card_front.png")
+back_img = PhotoImage(file="Day-31 Flash Card Project/images/card_back.png")
 card_image = canvas.create_image(400, 263,image=front_img)
 card_title = canvas.create_text(400,150,text="",font=("Arial",40,"italic"))
 card_word = canvas.create_text(400,263,text="",font=("Arial",60,"italic bold"))
 canvas.grid(row=0,column=0,columnspan=2)
 
 # Buttons
-right_img = PhotoImage(file="images/right.png")
+right_img = PhotoImage(file="Day-31 Flash Card Project/images/right.png")
 right_button = Button(image=right_img,highlightthickness=0,command=is_known_card)
 right_button.grid(row=1,column=1)
 
-wrong_img = PhotoImage(file="images/wrong.png")
+wrong_img = PhotoImage(file="Day-31 Flash Card Project/images/wrong.png")
 wrong_button = Button(image=wrong_img,highlightthickness=0,command=change_word)
 wrong_button.grid(row=1,column=0)
 
